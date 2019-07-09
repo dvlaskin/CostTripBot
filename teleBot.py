@@ -191,4 +191,5 @@ if __name__ == "__main__":
             bot.polling(none_stop=False, interval=5, timeout=30)
         except Exception as e:
             print(e)    # или import traceback; traceback.print_exc() для печати полной инфы
+            logging.error(e)
             time.sleep(15)
