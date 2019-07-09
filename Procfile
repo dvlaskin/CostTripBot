@@ -1,1 +1,1 @@
-web: python teleBot.py
+web: python teleBotWebhook.py
