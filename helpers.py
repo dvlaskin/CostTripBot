@@ -47,11 +47,13 @@ def LocationsInfoPrint(jsonResult):
         Print all variants of found locations
         and return List of locations
         """
+        categoryTitleList = ['Building', 'Street or Square', 'City, Town or Village']
+
         aList = []
         counter = 1
         for items in jsonResult["results"]:
                 if ('categoryTitle' in items 
-                and items['categoryTitle'] == 'City, Town or Village' 
+                and categoryTitleList.count(items['categoryTitle']) != 0                     
                 and counter <= 5):
                         paramText = GetOptionStr(items)
                         aList.append(paramText)
