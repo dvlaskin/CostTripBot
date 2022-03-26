@@ -1,3 +1,4 @@
+import datetime
 import requests
 import urllib
 import json
@@ -136,6 +137,16 @@ def PrintJsonString(jsonText):
         Print formated json text
         """
         print(json.dumps(jsonText,indent=4, sort_keys=True))
+
+def PrintMsgLogToConsole(message):
+        """
+        Use Python print command to show message info
+        """
+        print("user: {}; time: {}; message: {};".format(
+            message.from_user.first_name, 
+            str(datetime.datetime.now()), 
+            message.text)
+        )
 
 def CleanHtml(raw_html):
         cleanr = re.compile('<.*?>')

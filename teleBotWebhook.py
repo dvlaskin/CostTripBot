@@ -44,6 +44,8 @@ def send_other(message):
             str(datetime.datetime.now()), 
             message.text)
         )
+        hp.PrintMsgLogToConsole(message)
+
 
 def process_fuel_price(message):
     try:
@@ -85,6 +87,8 @@ def process_get_pointA(message):
 
         locA = hp.SearchLocation(pointA)
         aList = hp.LocationsInfo(locA)
+
+        hp.PrintMsgLogToConsole(message)
 
         if len(aList) == 0:
             msg = bot.reply_to(message, 'Point not found. Try again.')
@@ -129,6 +133,8 @@ def process_get_pointB(message):
         locB = hp.SearchLocation(pointB)
         bList = hp.LocationsInfo(locB)
 
+        hp.PrintMsgLogToConsole(message)
+
         if len(bList) == 0:
             msg = bot.reply_to(message, 'Point not found. Try again.')
             bot.register_next_step_handler(msg, process_get_pointB)
@@ -170,6 +176,8 @@ def calc_cost(message):
 
         routParams = hp.GetRouting(tripInfo.pointA,tripInfo.pointB)
         msg = hp.CalcCostResult(tripInfo.fuelCons, tripInfo.fuelPrice, routParams)
+
+        print(msg)
 
         bot.send_message(chat_id, msg)
         user_dict.pop(chat_id)
